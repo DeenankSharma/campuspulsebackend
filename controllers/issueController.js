@@ -2,7 +2,8 @@ import supabase from '../database/supabase_connections.js'
 
 export const createIssue = async (req, res) => {
   try {
-    const { title, desc, image_url, lat, long, critical, enr } = req.body
+    console.log(req.body);
+    const { title, desc, image_url, lat, long, critical, enr, domain } = req.body
 
     if (!title || !enr) {
       return res.status(400).json({ success: false, error: 'title and enr are required' })
@@ -15,7 +16,8 @@ export const createIssue = async (req, res) => {
       lat: lat ?? null,
       long: long ?? null,
       critical: critical ?? null,
-      enr
+      enr,
+      domain: domain ?? null
     }
 
     const { data, error } = await supabase
