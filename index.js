@@ -9,7 +9,9 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT
+// index.js or app.js
+const PORT = process.env.PORT || 3000; // <--- Crucial Line
+
 
 app.use(cors())
 
@@ -19,9 +21,6 @@ app.use('/api', studentRoutes)
 app.use('/api/issues', issueRoutes)
 app.use('/api/employee', employeeRoutes)
 app.use('/api/employee_issues', employeeIssueRoutes)
-
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-}
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
