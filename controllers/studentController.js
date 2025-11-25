@@ -22,6 +22,7 @@ import supabase from '../database/supabase_connections.js'
 
 export const getStudentById = async (req, res) => {
   try {
+    console.log(req.params.id);
     const { data, error } = await supabase
       .from('student_details')
       .select('*')
@@ -29,7 +30,7 @@ export const getStudentById = async (req, res) => {
       .single()
 
     if (error) throw error
-    
+    console.log(data);
     if (!data) {
       return res.status(404).json({
         success: false,

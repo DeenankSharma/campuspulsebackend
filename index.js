@@ -9,8 +9,7 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-// index.js or app.js
-const PORT = process.env.PORT || 3000; // <--- Crucial Line
+const PORT =  process.env.PORT || 5000; 
 
 
 app.use(cors())
@@ -21,6 +20,10 @@ app.use('/api', studentRoutes)
 app.use('/api/issues', issueRoutes)
 app.use('/api/employee', employeeRoutes)
 app.use('/api/employee_issues', employeeIssueRoutes)
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+export default app;
